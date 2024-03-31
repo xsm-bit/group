@@ -1,0 +1,18 @@
+version: '3'
+services:
+  chatbot:
+    image: chatbot:v7
+    depends_on:
+      - nginx
+    command: python chatbot.py
+
+  nginx:
+    image: mynginx:v6
+    ports:
+      - "8081:80"
+
+  zxy_chatbot:
+    image: zxy_chatbot:v1
+    depends_on:
+      - nginx
+    command: python chatbot.py
